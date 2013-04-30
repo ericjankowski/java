@@ -1,0 +1,11 @@
+*.class
+*/target/*
+*/target/**
+target/
+.settings/
+.classpath
+.project
+.gradle/
+*.jar
+lib/
+hadoop/data/
