@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<project name="jenkins" default="execute">
+	<description>Compiles and runs a simple program</description>
+	<target name="print-name">
+		<property environment="env" />
+		<echo message="${env.NAME}" />
+	</target>
+</project>

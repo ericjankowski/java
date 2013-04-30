@@ -1,0 +1,13 @@
+<project name="Sample Project">
+	<bannerLeft>
+		<name>...</name>
+		<src>...</src>
+		<href>...</href>
+	</bannerLeft>
+	<body>
+		<menu name="...">
+			<item name="..." href="..." />
+		</menu>
+		<menu ref="reports" />
+	</body>
+</project>

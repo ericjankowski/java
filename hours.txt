@@ -1,0 +1,64 @@
+Basic Java Practice				1
+Ant
+AOP
+AspectJ
+AWS
+Batch
+Big Data
+Concurrency
+Chef
+EC2
+S3
+EasyMock
+Eclipse
+EJB
+EMR
+ESB
+Git
+Glassfish
+Gradle
+Groovy
+Hadoop
+HBase
+Hibernate
+Hudson
+Introduction to Algorithms
+Ivy
+Javadoc
+JDBC
+JEE
+JMeter
+JMS
+JPA
+JSP/Servlets
+JUnit
+Log4J
+Maven
+MongoDB
+Mockito
+MVC
+MySql
+Oracle
+Play framework
+Performance Testing
+Pig
+The Pragmatic Programmer
+Puppet
+RCP
+REST
+Scala
+Selenium
+SOA
+SOAP
+SOAP UI
+Spock
+Spring
+Spring MQ
+Struts
+Tomcat
+XML
+XSD
+XSL
+WebLogic
+WebSphere
+The Well-Grounded Java Developer

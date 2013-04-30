@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>Building and Testing with Gradle</title>
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../../css/style.css">
+	</head>
+	<body>
+		<h1>Building and Testing with Gradle</h1>
+		<h2>Chapter 1: Hello, Gradle!</h2>
+		<ul>
+			<li>Ant and Maven have occupied opposing positions:</li>
+			<ul>
+				<li>Ant offers extreme flexibility, but usability is difficult.</li>
+				<li>Maven requires very strict conventions, and usability is easy.</li>
+			</ul>
+		</ul>
+		<h3>Build Files in Groovy</h3>
+		<ul>
+			<li>XML is the wrong format for a build file.</li>
+			<li>Every Gradle build file is an executable Groovy script.</li>
+			<li>Because Gradle is based on Groovy, developers still have direct control of their builds.</li>
+		</ul>
+		<h3>Domain-Specific Build Languages</h3>
+		<ul>
+			<li>Scripting and Coding is discouraged</li>
+			<li>Gradle plug-ins</li>
+			<li>Gradle task definition</li>
+			<ul>
+				<li>Even through the simple mechanism of a custom Gradle task, you can introduce small pieces of build vocabulary, turning an otherwise undesirable chunk of imperative code into a clean declaration.</li>
+			</ul>
+			<li>Using and extending the Gradle DSL are usually preferable to writing code in your build file.</li>
+		</ul>
+		<h2>Chapter 2: Gradle Tasks</h2>
+		<h3>Declaring a Task</h3>
+		<h3>Task action</h3>
+		<ul>
+			<li>&lt;&lt; is the equivalent of doLast()</li>
+			<li>As a result, tasks are not one-off declarations of build activity</li>
+		</ul>
+		<h3>Task Configuration</h3>
+		<ul>
+			<li>A closure added to the task name without the left-shift operator doesn't create additional task action code.  It is a configuration block.</li>
+			<li>Configuration blocks run during Gradle's configuration lifecycle phase - before the execution phase, when task actions are executed.</li>
+		</ul>
+		<h3>Tasks are objects</h3>
+		<h4>Methods of DefaultTask<h4>
+		<h5>dependsOn(task)</h5>
+		<h5>doFirst(closure)</h5>
+		
+	</body>
+</html>

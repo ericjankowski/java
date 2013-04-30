@@ -1,0 +1,5 @@
+task copyFiles(type: Copy){
+	from 'source'
+	into 'destination'
+	include '**/*.txt'
+}

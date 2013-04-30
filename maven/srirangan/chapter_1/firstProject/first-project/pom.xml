@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>mozido</groupId>
+	<artifactId>first-project</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+		<dependency>
+			<groupId>de.cologneintelligence</groupId>
+			<artifactId>fitgoodies</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>10.1.3.1</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<inherited>true</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<optimize>true</optimize>
+					<debug>true</debug>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.derby</groupId>
+						<artifactId>derby</artifactId>
+						<version>10.1.3.1</version>
+					</dependency>
+					<dependency>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+						<version>1.2.14</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>default</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<inherited>true</inherited>
+						<configuration>
+							<tasks>
+								<property name="tests" value="${basedir}/src/test/fixtures" />
+								<property name="target" value="${project.build.directory}/test/fixtures" />
+								<property name="reltarget" value="test/fixtures" />
+								
+								<copy todir="${target}">
+									<fileset dir="${tests}" erroronmissingdir="false"
+										casesensitive="false" excludes="**/*.html" />
+								</copy>
+								
+								<java classname="de.cologneintelligence.fitgoodies.runners.DirectoryRunner" 
+										dir="${project.build.directory}"
+										fork="true" failonerror="true">
+									<classpath>
+										<path refid="maven.test.classpath" />
+									</classpath>
+									<arg value="${tests}" />
+									<arg value="${reltarget}" />
+									<arg value="utf-8" />
+								</java>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+			        <groupId>org.codehaus.mojo</groupId>
+				<artifactId>selenium-maven-plugin</artifactId>
+				<version>2.0</version>
+				<executions>
+				        <execution>
+					        <phase>pre-integration-test</phase>
+						<goals>
+						        <goal>start-server</goal>
+						</goals>
+						<configuration>
+						        <background>true</background>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

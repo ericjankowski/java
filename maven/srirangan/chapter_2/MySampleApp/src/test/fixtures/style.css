@@ -1,0 +1,15 @@
+@CHARSET "ISO-8859-1";
+
+/* $Id: style.css 10 2009-11-13 15:18:48Z jochen_wierum $ */
+
+table {
+	border: 1px solid black;
+}
+
+td {
+	border: 1px solid black;
+}
+
+tr:first-child {
+	background-color: yellow;
+}
