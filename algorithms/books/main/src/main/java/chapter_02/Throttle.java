@@ -1,6 +1,6 @@
 package chapter_02;
 
-public class Throttle {
+public class Throttle implements Cloneable{
 	private int top;
 	private int position = 0;
 	
@@ -50,4 +50,23 @@ public class Throttle {
 		return getFlow() > ((double)top / 2.0);
 	}
 	
+	public boolean equals(Object o){
+		if (o instanceof Throttle){
+			Throttle other = (Throttle) o;
+			return this.position == other.position && this.top == other.top;
+		}
+		return false;
+	}
+	
+	public Throttle clone(){
+		Throttle answer;
+		
+		try{
+			answer = (Throttle) super.clone();
+		}catch(CloneNotSupportedException e){
+			throw new RuntimeException("This class does not implement Cloneable.");
+		}
+		
+		return answer;
+	}
 }
