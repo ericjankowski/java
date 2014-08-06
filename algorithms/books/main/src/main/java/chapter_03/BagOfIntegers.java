@@ -44,34 +44,72 @@ public class BagOfIntegers implements Cloneable{
 	}
 	
 	public boolean remove(int target){
-		return false;
+		int index = 0;
+		
+		while ((index < numberOfItems) && (target != data[index])){
+			index++;
+		}
+		if (index == numberOfItems){
+			return false;
+		}else{
+			numberOfItems--;
+			data[index] = data[numberOfItems];
+			return true;
+		}
 	}
 	
 	public int size(){
-		return 0;
+		return numberOfItems;
 	}
 	
 	public int countOccurrences(int target){
-		return 0;
+		int answer = 0;
+		for (int index = 0; index < numberOfItems; index++){
+			if (target == data[index]){
+				answer++;
+			}
+		}
+		return answer;
 	}
 	
 	public static BagOfIntegers union(BagOfIntegers bag1, BagOfIntegers bag2){
-		return new BagOfIntegers();
+		BagOfIntegers result = new BagOfIntegers(bag1.getCapacity() + bag2.getCapacity());
+		System.arraycopy(bag1.data, 0, result.data, 0, bag1.numberOfItems);
+		System.arraycopy(bag2.data, 0, result.data, bag1.numberOfItems, bag2.numberOfItems);
+		result.numberOfItems = bag1.numberOfItems + bag2.numberOfItems;
+		
+		return result;
 	}
 	
 	public BagOfIntegers clone(){
-		return this;
+		BagOfIntegers result;
+		try{
+			result = (BagOfIntegers)super.clone();
+		}catch(CloneNotSupportedException e){
+			throw new RuntimeException("This class does not implement the cloneable interface");
+		}
+		result.data = data.clone();
+		
+		return result;
 	}
 	
 	public int getCapacity(){
-		return 0;
+		return data.length;
 	}
 	
 	public void ensureCapacity(int minimumCapacity){
-		
+		if (data.length < minimumCapacity){
+			int[] biggerArray = new int[minimumCapacity];
+			System.arraycopy(data, 0, biggerArray, 0, numberOfItems);
+			data = biggerArray;
+		}
 	}
 	
 	public void trimToSize(){
-		
+		if (data.length != numberOfItems){
+			int [] trimmedArray = new int[numberOfItems];
+			System.arraycopy(data, 0, trimmedArray, 0, numberOfItems);
+			data = trimmedArray;
+		}
 	}
 }
