@@ -28,11 +28,6 @@ public class ParenthesisExample {
 		
 		for (int i = 0; !failed && (i < expression.length()); i++){
 			switch (expression.charAt(i)){
-				case LEFT_NORMAL:
-				case LEFT_CURLY:
-				case LEFT_SQUARE:
-					store.push(expression.charAt(i));
-					break;
 				case RIGHT_NORMAL:
 					failed = store.isEmpty() || store.pop() != LEFT_NORMAL;
 					break;
@@ -41,6 +36,9 @@ public class ParenthesisExample {
 					break;
 				case RIGHT_SQUARE:
 					failed = store.isEmpty() || store.pop() != LEFT_SQUARE;
+					break;
+				default:
+					store.push(expression.charAt(i));
 					break;
 			}
 		}
