@@ -11,11 +11,11 @@ public class ExpressionEvaluator {
 	public static void main (String [] args){
 		String one = "(2 + 3)";
 		String two = "((2 + 3) + 4)";
-		String three = "(2 + (3 + 4))";
+		String three = "(2 * (3 + 4))";
 		
 		System.out.println(one + " = " + evaluate(one));
 		System.out.println(two + " = " + evaluate(two));
-		System.out.println(three + " = " + evaluate(three));  //not sure why this doesn't work, yet.
+		System.out.println(three + " = " + evaluate(three));
 	}
 	
 	public static double evaluate (String expression){
@@ -58,8 +58,7 @@ public class ExpressionEvaluator {
 		double operand1;
 		double operand2;
 		
-		if ((numbers.size() > 2) || operations.isEmpty()){
-			System.out.println(numbers.size());
+		if ((numbers.size() < 2) || operations.isEmpty()){
 			throw new IllegalArgumentException("Illegal inpput expression");
 		}
 		
