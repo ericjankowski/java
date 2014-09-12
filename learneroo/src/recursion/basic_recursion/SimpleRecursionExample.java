@@ -1,4 +1,4 @@
-package recusrion.basic_recursion;
+package recursion.basic_recursion;
 
 public class SimpleRecursionExample {
 	public static void main(String[] args) {
